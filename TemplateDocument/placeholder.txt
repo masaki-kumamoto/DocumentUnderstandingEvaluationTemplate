@@ -1,0 +1,1 @@
+TemplateDocument folder should store the Template Document Files to build an extractor template [Form Extractor] or [Intelligent Form Extractor]

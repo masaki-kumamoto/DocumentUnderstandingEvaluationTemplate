@@ -1,0 +1,75 @@
+{
+  "name": "Document Understanding Evaluation Template",
+  "description": "This template project facilitates the efficient development of workflows that output information about the extraction accuracy of Document Understanding in a beautiful Excel format.\r\nBy configuring various settings in the Config.xlsx, it is even possible to generate reports for multiple types of OCR, which is useful for comparing and verifying each OCR solution.\r\n\r\n# Use Cases\r\n- Compare the extraction accuracy of each OCR applied to DU\r\n- Optimizing the development process to improve document extraction accurecy\r\n- Demonstration for building Document Validation Actions in the Action Center",
+  "main": "01_ExtractDocumentsData.xaml",
+  "dependencies": {
+    "Microsoft.Office.Interop.Excel": "[15.0.4795.1000]",
+    "UiPath.Abbyy.Activities": "[1.4.2]",
+    "UiPath.DocumentUnderstanding.ML.Activities": "[1.7.0]",
+    "UiPath.Excel.Activities": "[2.10.4]",
+    "UiPath.IntelligentOCR.Activities": "[4.13.1]",
+    "UiPath.OCR.Activities": "[3.0.0]",
+    "UiPath.OmniPage.Activities": "[1.7.1]",
+    "UiPath.PDF.Activities": "[3.4.0]",
+    "UiPath.Persistence.Activities": "[1.2.2]",
+    "UiPath.System.Activities": "[21.4.0]",
+    "UiPath.UIAutomation.Activities": "[21.4.3]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "20.10.4.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": false,
+    "supportsPersistence": true,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": true,
+    "startsInPiP": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": [
+        "ReadMe.pdf"
+      ]
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": true
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "01_ExtractDocumentsData.xaml",
+      "uniqueId": "8204e6ff-dcf5-4f4b-baaa-6e3ff9d07b34",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "02_CopyActualValuesToReport.xaml",
+      "uniqueId": "fb9de371-9e09-405d-8e3d-f59d3d10b24d",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": true,
+  "templateProjectData": {
+    "defaultProjectDescription": "",
+    "defaultProjectName": "Document Understanding Evaluation"
+  },
+  "publishData": {
+    "iconUrl": "https://download.uipath.com/DU_icon.png?documentunderstanding-ml"
+  },
+  "targetFramework": "Legacy"
+}

@@ -1,0 +1,471 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="DU_GetExtractionResult" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p1="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:p2="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p3="http://schemas.uipath.com/workflow/activities/intelligentocr/classification" xmlns:p4="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p5="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p6="http://schemas.uipath.com/workflow/activities/documentunderstanding-ml" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="DU_DocumentTypeId" Type="InArgument(x:String)" />
+    <x:Property Name="docText" Type="InArgument(x:String)" />
+    <x:Property Name="docObjMdl" Type="InArgument(p:Document)" />
+    <x:Property Name="taxonomy" Type="InArgument(p1:DocumentTaxonomy)" />
+    <x:Property Name="extractionResults" Type="OutArgument(p2:ExtractionResult)" />
+    <x:Property Name="DU_IntelligentFromExtractor_Endpoint" Type="InArgument(x:String)" />
+    <x:Property Name="DU_ApiKey" Type="InArgument(x:String)" />
+    <x:Property Name="docPath" Type="InArgument(x:String)" />
+    <x:Property Name="DU_FromExtractor_Endpoint" Type="InArgument(x:String)" />
+    <x:Property Name="DU_IntelligentKeywordClassifier_Endpoint" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>1592,1209</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="86">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Taxonomy</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Dom</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Results</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.Actions.Model</x:String>
+      <x:String>UiPath.Persistence.Activities.Tasks</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Persistence.Activities.Model.Task</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.TaxonomyManagement</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.DataExtraction</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Abbyy.Core.FlexiCapture</x:String>
+      <x:String>UiPath.Abbyy.Core.FlexiCapture.Enums</x:String>
+      <x:String>UiPath.Abbyy.Core.FlexiCapture.ValidationStationAdapters</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.DataExtraction</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.DocumentClassification</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Classification</x:String>
+      <x:String>UiPath.DocumentUnderstanding.ML.Activities</x:String>
+      <x:String>UiPath.DocumentUnderstanding.ML.Activities.Editors</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Training</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.Training</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="86">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Abbyy.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.OmniPage.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Abbyy.Core</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Persistence.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.OmniPage.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Return &#xA;&lt;UiPath.DocumentProcessing.Contracts.Result.ExtractionResult&gt; extractionResults" DisplayName="GetExtractionResult" sap:VirtualizedContainerService.HintSize="376,611" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="p2:ClassificationResult[]" Name="classificationResults" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log message (close applications)" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Extracting Document data...&quot;]" />
+    <ui:CommentOut sap2010:Annotation.AnnotationText="Right click this activity and select &quot;Enable Activity&quot; it to use Classier Activities." DisplayName="Classification + Extraction" sap:VirtualizedContainerService.HintSize="334,108" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="1200,1631" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <p3:ClassifyDocumentScope sap2010:Annotation.AnnotationText="How to Configure&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/keyword-based-classifier#how-to-configure-at-design-time" ClassificationResults="[classificationResults]" DisplayName="Classify Document Scope" DocumentObjectModel="[docObjMdl]" DocumentPath="[docPath]" DocumentText="[docText]" sap:VirtualizedContainerService.HintSize="1158,713" sap2010:WorkflowViewState.IdRef="ClassifyDocumentScope_1" Taxonomy="[taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{},&quot;ClassifierMinimumConfidence&quot;:{},&quot;DocumentTypesByPersistenceId&quot;:{&quot;UI89c3ff23cfe841e6913b50fe377e9057&quot;:[],&quot;UI14f86ec6c43d42f1b64ba79369e27dc4&quot;:[]}}">
+            <p3:ClassifyDocumentScope.Classifiers>
+              <p3:KeywordBasedClassifier ClassifierResult="{x:Null}" DocumentObjectModel="{x:Null}" DocumentPath="{x:Null}" DocumentText="{x:Null}" DocumentTypes="{x:Null}" HumanValidatedData="{x:Null}" LearningData="{x:Null}" sap2010:Annotation.AnnotationText="How to Configure&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/keyword-based-classifier#how-to-configure-at-design-time" DisplayName="Keyword Based Classifier" sap:VirtualizedContainerService.HintSize="234,320" sap2010:WorkflowViewState.IdRef="KeywordBasedClassifier_1" LearningFilePath="DocumentProcessing\classifierLearningFile.json" PersistenceId="UI14f86ec6c43d42f1b64ba79369e27dc4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </p3:KeywordBasedClassifier>
+              <p3:IntelligentKeywordClassifier ClassifierResult="{x:Null}" DocumentObjectModel="{x:Null}" DocumentPath="{x:Null}" DocumentText="{x:Null}" DocumentTypes="{x:Null}" LearningData="{x:Null}" sap2010:Annotation.AnnotationText="How to Configure&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/intelligent-keyword-classifier#how-to-configure-at-design-time" ApiKey="[DU_ApiKey]" DisplayName="Intelligent Keyword Classifier" Endpoint="[DU_IntelligentKeywordClassifier_Endpoint]" sap:VirtualizedContainerService.HintSize="234,320" sap2010:WorkflowViewState.IdRef="IntelligentKeywordClassifier_1" LearningFilePath="DocumentProcessing\classifierLearningFile.json" PersistenceId="UI89c3ff23cfe841e6913b50fe377e9057">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </p3:IntelligentKeywordClassifier>
+            </p3:ClassifyDocumentScope.Classifiers>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </p3:ClassifyDocumentScope>
+          <p4:DataExtractionScope DocumentTypeId="{x:Null}" sap2010:Annotation.AnnotationText="Configure Extractors Wizard of Data Extraction Scope&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/configure-extractors-wizard-data-extraction-scope" ClassificationResult="[classificationResults(0)]" DisplayName="Data Extraction Scope" DocumentObjectModel="[docObjMdl]" DocumentPath="[docPath]" DocumentText="[docText]" ExtractionResult="[extractionResults]" FormatValuesIfPossible="True" sap:VirtualizedContainerService.HintSize="1158,786" sap2010:WorkflowViewState.IdRef="DataExtractionScope_2" Taxonomy="[taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{},&quot;ExtractorMinimumConfidence&quot;:{},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UIc739cfb666674ac5b8ed382a25a4d4ed&quot;:[],&quot;UI4a6b9dd16c44475d9d6c9f47e3538f0d&quot;:[],&quot;UI4b12d38cac8440fa908f2ecd593a2516&quot;:[],&quot;UIee97477404c048c99d2c6753d6151a7c&quot;:[]}}">
+            <p4:DataExtractionScope.Extractors>
+              <p4:RegexBasedExtractor DocumentBounds="{x:Null}" DocumentObjectModel="{x:Null}" DocumentPath="{x:Null}" DocumentText="{x:Null}" ExtractorDocumentType="{x:Null}" ExtractorResult="{x:Null}" sap2010:Annotation.AnnotationText="How to configure&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/regex-based-extractor#how-to-configure" Configuration="%[]" DisplayName="Regex Based Extractor" sap:VirtualizedContainerService.HintSize="234,399" sap2010:WorkflowViewState.IdRef="RegexBasedExtractor_1" PersistenceId="UI4b12d38cac8440fa908f2ecd593a2516" Timeout="2000" UseVisualAlignment="False">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </p4:RegexBasedExtractor>
+              <p4:FormExtractor DocumentBounds="{x:Null}" DocumentObjectModel="{x:Null}" DocumentPath="{x:Null}" DocumentText="{x:Null}" ExtractorDocumentType="{x:Null}" ExtractorResult="{x:Null}" SerializedSignatureFields="{x:Null}" sap2010:Annotation.AnnotationText="How to configure&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/form-extractor#how-to-configure" ApiKey="[DU_ApiKey]" DisplayName="Form Extractor" Endpoint="[DU_FromExtractor_Endpoint]" sap:VirtualizedContainerService.HintSize="234,399" sap2010:WorkflowViewState.IdRef="FormExtractor_1" MinOverlapPercentage="65" PersistenceId="UIee97477404c048c99d2c6753d6151a7c" SerializedSettings="{}{}" SerializedTemplates="[]" Timeout="100000">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </p4:FormExtractor>
+              <p4:IntelligentFormExtractor SerializedSignatureFields="{x:Null}" sap2010:Annotation.AnnotationText="How to configure&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/intelligent-form-extractor#how-to-configure" ApiKey="[DU_ApiKey]" DisplayName="Intelligent Form Extractor" Endpoint="[DU_IntelligentFromExtractor_Endpoint]" sap:VirtualizedContainerService.HintSize="234,399" sap2010:WorkflowViewState.IdRef="IntelligentFormExtractor_2" MinOverlapPercentage="65" PersistenceId="UIc739cfb666674ac5b8ed382a25a4d4ed" SerializedSettings="{}{}" SerializedTemplates="[]" Timeout="100000">
+                <p4:IntelligentFormExtractor.DocumentBounds>
+                  <InArgument x:TypeArguments="p2:ResultsDocumentBounds">
+                    <DelegateArgumentValue x:TypeArguments="p2:ResultsDocumentBounds" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_7">
+                      <DelegateInArgument x:TypeArguments="p2:ResultsDocumentBounds" Name="DocumentBounds" />
+                    </DelegateArgumentValue>
+                  </InArgument>
+                </p4:IntelligentFormExtractor.DocumentBounds>
+                <p4:IntelligentFormExtractor.DocumentObjectModel>
+                  <InArgument x:TypeArguments="p:Document">
+                    <DelegateArgumentValue x:TypeArguments="p:Document" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_9">
+                      <DelegateInArgument x:TypeArguments="p:Document" Name="DocumentObjectModel" />
+                    </DelegateArgumentValue>
+                  </InArgument>
+                </p4:IntelligentFormExtractor.DocumentObjectModel>
+                <p4:IntelligentFormExtractor.DocumentPath>
+                  <InArgument x:TypeArguments="x:String">
+                    <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_10">
+                      <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                    </DelegateArgumentValue>
+                  </InArgument>
+                </p4:IntelligentFormExtractor.DocumentPath>
+                <p4:IntelligentFormExtractor.DocumentText>
+                  <InArgument x:TypeArguments="x:String">
+                    <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_8">
+                      <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                    </DelegateArgumentValue>
+                  </InArgument>
+                </p4:IntelligentFormExtractor.DocumentText>
+                <p4:IntelligentFormExtractor.ExtractorDocumentType>
+                  <InArgument x:TypeArguments="p5:ExtractorDocumentType">
+                    <DelegateArgumentValue x:TypeArguments="p5:ExtractorDocumentType" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_6">
+                      <DelegateInArgument x:TypeArguments="p5:ExtractorDocumentType" Name="ExtractorDocumentType" />
+                    </DelegateArgumentValue>
+                  </InArgument>
+                </p4:IntelligentFormExtractor.ExtractorDocumentType>
+                <p4:IntelligentFormExtractor.ExtractorResult>
+                  <OutArgument x:TypeArguments="p5:ExtractorResult">
+                    <DelegateArgumentReference x:TypeArguments="p5:ExtractorResult" sap2010:WorkflowViewState.IdRef="DelegateArgumentReference`1_2">
+                      <DelegateOutArgument x:TypeArguments="p5:ExtractorResult" Name="ExtractorResult" />
+                    </DelegateArgumentReference>
+                  </OutArgument>
+                </p4:IntelligentFormExtractor.ExtractorResult>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </p4:IntelligentFormExtractor>
+              <p6:MachineLearningExtractor DocumentBounds="{x:Null}" DocumentObjectModel="{x:Null}" DocumentPath="{x:Null}" DocumentText="{x:Null}" Endpoint="{x:Null}" ExtractorDocumentType="{x:Null}" ExtractorResult="{x:Null}" SelectedMLSkill="{x:Null}" sap2010:Annotation.AnnotationText="How to configure&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/machine-learning-extractor#how-to-configure#how-to-configure&#xA;&#xA;Public Endpoints List&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/public-endpoints" ApiKey="[DU_ApiKey]" Configuration="{}{&quot;Endpoint&quot;:&quot;https://du.uipath.com/ie/invoices&quot;,&quot;ApiKey&quot;:&quot;wVVLEreWCghTuDj5/6wqmYCEPZhFYik6ytA0GatAB1oBNZtGn4G+m26bdwuwrWOU&quot;,&quot;AvailableMLSkills&quot;:[]}" DisplayName="Machine Learning Extractor" sap:VirtualizedContainerService.HintSize="234,399" sap2010:WorkflowViewState.IdRef="MachineLearningExtractor_1" PersistenceId="UI4a6b9dd16c44475d9d6c9f47e3538f0d" RetryOnFailure="True" Timeout="100000" UseServerSideOCR="False">
+                <p6:MachineLearningExtractor.AvailableMLSkills>
+                  <sc:BindingList x:TypeArguments="x:String" AllowEdit="True" AllowNew="False" AllowRemove="True" RaiseListChangedEvents="True" />
+                </p6:MachineLearningExtractor.AvailableMLSkills>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </p6:MachineLearningExtractor>
+            </p4:DataExtractionScope.Extractors>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </p4:DataExtractionScope>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:CommentOut sap2010:Annotation.AnnotationText="Right click this activity and select &quot;Enable Activity&quot; it you DO NOT need to use Classier Activities.&#xA;*You have to specify &quot;DU_DocumentTypeId&quot; in the config file to use this componen." DisplayName="Extraction Only" sap:VirtualizedContainerService.HintSize="334,183" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <p4:DataExtractionScope ClassificationResult="{x:Null}" sap2010:Annotation.AnnotationText="Configure Extractors Wizard of Data Extraction Scope&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/configure-extractors-wizard-data-extraction-scope" DisplayName="Data Extraction Scope" DocumentObjectModel="[docObjMdl]" DocumentPath="[docPath]" DocumentText="[docText]" DocumentTypeId="[DU_DocumentTypeId]" ExtractionResult="[extractionResults]" FormatValuesIfPossible="True" sap:VirtualizedContainerService.HintSize="1158,762" sap2010:WorkflowViewState.IdRef="DataExtractionScope_5" Taxonomy="[taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{},&quot;ExtractorMinimumConfidence&quot;:{},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UIc739cfb666674ac5b8ed382a25a4d4ed&quot;:[],&quot;UI4a6b9dd16c44475d9d6c9f47e3538f0d&quot;:[],&quot;UI4b12d38cac8440fa908f2ecd593a2516&quot;:[],&quot;UIee97477404c048c99d2c6753d6151a7c&quot;:[]}}">
+          <p4:DataExtractionScope.Extractors>
+            <p4:RegexBasedExtractor sap2010:Annotation.AnnotationText="How to configure&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/regex-based-extractor#how-to-configure" Configuration="%[]" DisplayName="Regex Based Extractor" sap:VirtualizedContainerService.HintSize="234,384" sap2010:WorkflowViewState.IdRef="RegexBasedExtractor_4" PersistenceId="UI4b12d38cac8440fa908f2ecd593a2516" Timeout="2000" UseVisualAlignment="False">
+              <p4:RegexBasedExtractor.DocumentBounds>
+                <InArgument x:TypeArguments="p2:ResultsDocumentBounds">
+                  <DelegateArgumentValue x:TypeArguments="p2:ResultsDocumentBounds">
+                    <DelegateInArgument x:TypeArguments="p2:ResultsDocumentBounds" Name="DocumentBounds" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:RegexBasedExtractor.DocumentBounds>
+              <p4:RegexBasedExtractor.DocumentObjectModel>
+                <InArgument x:TypeArguments="p:Document">
+                  <DelegateArgumentValue x:TypeArguments="p:Document">
+                    <DelegateInArgument x:TypeArguments="p:Document" Name="DocumentObjectModel" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:RegexBasedExtractor.DocumentObjectModel>
+              <p4:RegexBasedExtractor.DocumentPath>
+                <InArgument x:TypeArguments="x:String">
+                  <DelegateArgumentValue x:TypeArguments="x:String">
+                    <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:RegexBasedExtractor.DocumentPath>
+              <p4:RegexBasedExtractor.DocumentText>
+                <InArgument x:TypeArguments="x:String">
+                  <DelegateArgumentValue x:TypeArguments="x:String">
+                    <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:RegexBasedExtractor.DocumentText>
+              <p4:RegexBasedExtractor.ExtractorDocumentType>
+                <InArgument x:TypeArguments="p5:ExtractorDocumentType">
+                  <DelegateArgumentValue x:TypeArguments="p5:ExtractorDocumentType">
+                    <DelegateInArgument x:TypeArguments="p5:ExtractorDocumentType" Name="ExtractorDocumentType" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:RegexBasedExtractor.ExtractorDocumentType>
+              <p4:RegexBasedExtractor.ExtractorResult>
+                <OutArgument x:TypeArguments="p5:ExtractorResult">
+                  <DelegateArgumentReference x:TypeArguments="p5:ExtractorResult">
+                    <DelegateOutArgument x:TypeArguments="p5:ExtractorResult" Name="ExtractorResult" />
+                  </DelegateArgumentReference>
+                </OutArgument>
+              </p4:RegexBasedExtractor.ExtractorResult>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </p4:RegexBasedExtractor>
+            <p4:FormExtractor SerializedSignatureFields="{x:Null}" sap2010:Annotation.AnnotationText="How to configure&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/form-extractor#how-to-configure" ApiKey="[DU_ApiKey]" DisplayName="Form Extractor" Endpoint="[DU_FromExtractor_Endpoint]" sap:VirtualizedContainerService.HintSize="234,384" sap2010:WorkflowViewState.IdRef="FormExtractor_4" MinOverlapPercentage="65" PersistenceId="UIee97477404c048c99d2c6753d6151a7c" SerializedSettings="{}{}" SerializedTemplates="[]" Timeout="100000">
+              <p4:FormExtractor.DocumentBounds>
+                <InArgument x:TypeArguments="p2:ResultsDocumentBounds">
+                  <DelegateArgumentValue x:TypeArguments="p2:ResultsDocumentBounds">
+                    <DelegateInArgument x:TypeArguments="p2:ResultsDocumentBounds" Name="DocumentBounds" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:FormExtractor.DocumentBounds>
+              <p4:FormExtractor.DocumentObjectModel>
+                <InArgument x:TypeArguments="p:Document">
+                  <DelegateArgumentValue x:TypeArguments="p:Document">
+                    <DelegateInArgument x:TypeArguments="p:Document" Name="DocumentObjectModel" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:FormExtractor.DocumentObjectModel>
+              <p4:FormExtractor.DocumentPath>
+                <InArgument x:TypeArguments="x:String">
+                  <DelegateArgumentValue x:TypeArguments="x:String">
+                    <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:FormExtractor.DocumentPath>
+              <p4:FormExtractor.DocumentText>
+                <InArgument x:TypeArguments="x:String">
+                  <DelegateArgumentValue x:TypeArguments="x:String">
+                    <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:FormExtractor.DocumentText>
+              <p4:FormExtractor.ExtractorDocumentType>
+                <InArgument x:TypeArguments="p5:ExtractorDocumentType">
+                  <DelegateArgumentValue x:TypeArguments="p5:ExtractorDocumentType">
+                    <DelegateInArgument x:TypeArguments="p5:ExtractorDocumentType" Name="ExtractorDocumentType" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:FormExtractor.ExtractorDocumentType>
+              <p4:FormExtractor.ExtractorResult>
+                <OutArgument x:TypeArguments="p5:ExtractorResult">
+                  <DelegateArgumentReference x:TypeArguments="p5:ExtractorResult">
+                    <DelegateOutArgument x:TypeArguments="p5:ExtractorResult" Name="ExtractorResult" />
+                  </DelegateArgumentReference>
+                </OutArgument>
+              </p4:FormExtractor.ExtractorResult>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </p4:FormExtractor>
+            <p4:IntelligentFormExtractor SerializedSignatureFields="{x:Null}" sap2010:Annotation.AnnotationText="How to configure&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/intelligent-form-extractor#how-to-configure" ApiKey="[DU_ApiKey]" DisplayName="Intelligent Form Extractor" Endpoint="[DU_IntelligentFromExtractor_Endpoint]" sap:VirtualizedContainerService.HintSize="234,384" sap2010:WorkflowViewState.IdRef="IntelligentFormExtractor_5" MinOverlapPercentage="65" PersistenceId="UIc739cfb666674ac5b8ed382a25a4d4ed" SerializedSettings="{}{}" SerializedTemplates="[]" Timeout="100000">
+              <p4:IntelligentFormExtractor.DocumentBounds>
+                <InArgument x:TypeArguments="p2:ResultsDocumentBounds">
+                  <DelegateArgumentValue x:TypeArguments="p2:ResultsDocumentBounds">
+                    <DelegateInArgument x:TypeArguments="p2:ResultsDocumentBounds" Name="DocumentBounds" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:IntelligentFormExtractor.DocumentBounds>
+              <p4:IntelligentFormExtractor.DocumentObjectModel>
+                <InArgument x:TypeArguments="p:Document">
+                  <DelegateArgumentValue x:TypeArguments="p:Document">
+                    <DelegateInArgument x:TypeArguments="p:Document" Name="DocumentObjectModel" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:IntelligentFormExtractor.DocumentObjectModel>
+              <p4:IntelligentFormExtractor.DocumentPath>
+                <InArgument x:TypeArguments="x:String">
+                  <DelegateArgumentValue x:TypeArguments="x:String">
+                    <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:IntelligentFormExtractor.DocumentPath>
+              <p4:IntelligentFormExtractor.DocumentText>
+                <InArgument x:TypeArguments="x:String">
+                  <DelegateArgumentValue x:TypeArguments="x:String">
+                    <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:IntelligentFormExtractor.DocumentText>
+              <p4:IntelligentFormExtractor.ExtractorDocumentType>
+                <InArgument x:TypeArguments="p5:ExtractorDocumentType">
+                  <DelegateArgumentValue x:TypeArguments="p5:ExtractorDocumentType">
+                    <DelegateInArgument x:TypeArguments="p5:ExtractorDocumentType" Name="ExtractorDocumentType" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p4:IntelligentFormExtractor.ExtractorDocumentType>
+              <p4:IntelligentFormExtractor.ExtractorResult>
+                <OutArgument x:TypeArguments="p5:ExtractorResult">
+                  <DelegateArgumentReference x:TypeArguments="p5:ExtractorResult">
+                    <DelegateOutArgument x:TypeArguments="p5:ExtractorResult" Name="ExtractorResult" />
+                  </DelegateArgumentReference>
+                </OutArgument>
+              </p4:IntelligentFormExtractor.ExtractorResult>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </p4:IntelligentFormExtractor>
+            <p6:MachineLearningExtractor Endpoint="{x:Null}" SelectedMLSkill="{x:Null}" sap2010:Annotation.AnnotationText="How to configure&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/machine-learning-extractor#how-to-configure#how-to-configure&#xA;&#xA;Public Endpoints List&#xA;&#xA;https://docs.uipath.com/document-understanding/docs/public-endpoints" ApiKey="[DU_ApiKey]" Configuration="{}{&quot;Endpoint&quot;:&quot;https://du.uipath.com/ie/invoices&quot;,&quot;ApiKey&quot;:&quot;wVVLEreWCghTuDj5/6wqmYCEPZhFYik6ytA0GatAB1oBNZtGn4G+m26bdwuwrWOU&quot;,&quot;AvailableMLSkills&quot;:[]}" DisplayName="Machine Learning Extractor" sap:VirtualizedContainerService.HintSize="234,384" sap2010:WorkflowViewState.IdRef="MachineLearningExtractor_4" PersistenceId="UI4a6b9dd16c44475d9d6c9f47e3538f0d" RetryOnFailure="True" Timeout="100000" UseServerSideOCR="False">
+              <p6:MachineLearningExtractor.AvailableMLSkills>
+                <sc:BindingList x:TypeArguments="x:String" AllowEdit="True" AllowNew="False" AllowRemove="True" RaiseListChangedEvents="True" />
+              </p6:MachineLearningExtractor.AvailableMLSkills>
+              <p6:MachineLearningExtractor.DocumentBounds>
+                <InArgument x:TypeArguments="p2:ResultsDocumentBounds">
+                  <DelegateArgumentValue x:TypeArguments="p2:ResultsDocumentBounds">
+                    <DelegateInArgument x:TypeArguments="p2:ResultsDocumentBounds" Name="DocumentBounds" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p6:MachineLearningExtractor.DocumentBounds>
+              <p6:MachineLearningExtractor.DocumentObjectModel>
+                <InArgument x:TypeArguments="p:Document">
+                  <DelegateArgumentValue x:TypeArguments="p:Document">
+                    <DelegateInArgument x:TypeArguments="p:Document" Name="DocumentObjectModel" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p6:MachineLearningExtractor.DocumentObjectModel>
+              <p6:MachineLearningExtractor.DocumentPath>
+                <InArgument x:TypeArguments="x:String">
+                  <DelegateArgumentValue x:TypeArguments="x:String">
+                    <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p6:MachineLearningExtractor.DocumentPath>
+              <p6:MachineLearningExtractor.DocumentText>
+                <InArgument x:TypeArguments="x:String">
+                  <DelegateArgumentValue x:TypeArguments="x:String">
+                    <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p6:MachineLearningExtractor.DocumentText>
+              <p6:MachineLearningExtractor.ExtractorDocumentType>
+                <InArgument x:TypeArguments="p5:ExtractorDocumentType">
+                  <DelegateArgumentValue x:TypeArguments="p5:ExtractorDocumentType">
+                    <DelegateInArgument x:TypeArguments="p5:ExtractorDocumentType" Name="ExtractorDocumentType" />
+                  </DelegateArgumentValue>
+                </InArgument>
+              </p6:MachineLearningExtractor.ExtractorDocumentType>
+              <p6:MachineLearningExtractor.ExtractorResult>
+                <OutArgument x:TypeArguments="p5:ExtractorResult">
+                  <DelegateArgumentReference x:TypeArguments="p5:ExtractorResult">
+                    <DelegateOutArgument x:TypeArguments="p5:ExtractorResult" Name="ExtractorResult" />
+                  </DelegateArgumentReference>
+                </OutArgument>
+              </p6:MachineLearningExtractor.ExtractorResult>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </p6:MachineLearningExtractor>
+          </p4:DataExtractionScope.Extractors>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </p4:DataExtractionScope>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+  </Sequence>
+</Activity>
