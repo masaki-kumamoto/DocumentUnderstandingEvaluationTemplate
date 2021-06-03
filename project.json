@@ -42,7 +42,9 @@
     },
     "processOptions": {
       "ignoredFiles": [
-        "ReadMe.pdf"
+        "ReadMe.pdf",
+        "LICENSE",
+        "ReadMe.adoc"
       ]
     },
     "fileInfoCollection": [],
