@@ -1,8 +1,8 @@
-= Document Understanding Evaluation Template (Ver 0.0.1)
+= Document Understanding Evaluation Template
 :author: Masaki Kumamoto
 :email: masaki.kumamoto@uipath.com
-:revdate: June 3, 2021
-:revnumber: 0.0.1
+:revdate: June 8, 2021
+:revnumber: 0.0.2
 :revremark: Initial project
 :version-label!:
 :sectids:
@@ -12,9 +12,7 @@
 :showtitle:
 :Some attr: Some value
 
-// Need some preamble to get TOC:
 {empty}
-
 
 ## Overview
 
@@ -228,7 +226,7 @@ e.g. Show OcrConfidence in Document Validation Actions instead of Confidence::
 
 If you have performed the "Execution Steps" and generated ActionList.xlsx for the same list of documents using the same taxonomy in the past, from next time, you can skip step validation in Action Center and execution of 02_CopyActualValuesToReport.xaml.
 
-e.g. Use existing Action.xlsx(Output/20210601/ActionList.xlsx) as an actual value reference
+e.g. Use existing Action.xlsx(Output/20210601/ActionList.xlsx) as an actual value reference::
 +
 [caption="Config.xlsx"]
 .(DuSettings sheet)
