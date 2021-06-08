@@ -42,7 +42,6 @@
     },
     "processOptions": {
       "ignoredFiles": [
-        "ReadMe.pdf",
         "LICENSE",
         "ReadMe.adoc",
         ".gitignore"
