@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2136,10939</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1061,10939</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="62">
@@ -617,7 +617,7 @@
                             </sap:WorkflowViewStateService.ViewState>
                             <ui:ExcelWriteRange AddHeaders="True" DataTable="[dtExtractedResult]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="797,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_5" SheetName="[fileName]" StartingCell="B2" />
                             <ui:ExcelCreateTable DisplayName="Create Table" sap:VirtualizedContainerService.HintSize="797,87" sap2010:WorkflowViewState.IdRef="ExcelCreateTable_1" Range="[&quot;B2:J&quot; + lastExcelRow.ToString]" SheetName="[fileName]" TableName="[excelTableName]" />
-                            <ui:ExcelWriteCell Cell="J3" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="797,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[fileName]" Text="=[@Value]=[@Actual]" />
+                            <ui:ExcelWriteCell Cell="J3" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="797,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[fileName]" Text="=EXACT([@Value],[@Actual])" />
                             <If Condition="[rowCount &gt;1]" sap:VirtualizedContainerService.HintSize="797,263" sap2010:WorkflowViewState.IdRef="If_21">
                               <If.Then>
                                 <ui:ExcelAutoFillRange DisplayName="Auto Fill Range" FillRange="[&quot;J3:J&quot; + lastExcelRow.ToString]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelAutoFillRange_5" SheetName="[fileName]" SourceRange="J3" />
