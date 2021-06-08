@@ -19,6 +19,8 @@
 - https://github.com/masaki-kumamoto/DocumentUnderstandingEvaluationTemplate/packages/828024[Document.Understanding.Evaluation.Template Nupkg] +
 (Download from Assets)
 
+<<<
+
 ## Overview
 
 ### What is Document Understanding Evaluation Template?
