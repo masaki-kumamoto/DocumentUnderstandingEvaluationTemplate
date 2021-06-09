@@ -1,8 +1,8 @@
 = Document Understanding Evaluation Template
 :author: Masaki Kumamoto
 :email: masaki.kumamoto@uipath.com
-:revdate: June 8, 2021
-:revnumber: 0.0.5
+:revdate: June 9, 2021
+:revnumber: 0.0.6
 :revremark: Initial project
 :version-label!:
 :sectids:
