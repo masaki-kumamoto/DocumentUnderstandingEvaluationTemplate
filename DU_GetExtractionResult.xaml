@@ -11,7 +11,7 @@
     <x:Property Name="DU_FromExtractor_Endpoint" Type="InArgument(x:String)" />
     <x:Property Name="DU_IntelligentKeywordClassifier_Endpoint" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1582,1225</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1566,1209</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="86">
