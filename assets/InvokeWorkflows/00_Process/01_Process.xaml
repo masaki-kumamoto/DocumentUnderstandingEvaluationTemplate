@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1061,10939</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1541,10939</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="62">
@@ -855,9 +855,9 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ExcelWriteCell Cell="[&quot;V&quot; + (fileCnt+4).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="Summary" Text="=AVERAGE(Summary[Boolean_Accuracy])" />
-                    <ui:ExcelWriteCell Cell="[&quot;W&quot; + (fileCnt+4).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="Summary" Text="=AVERAGE(Summary[Others_Accuracy])" />
-                    <ui:ExcelWriteCell Cell="[&quot;X&quot; + (fileCnt+4).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="Summary" Text="=AVERAGE(Summary[Total_Accuracy])" />
+                    <ui:ExcelWriteCell Cell="[&quot;R&quot; + (fileCnt+4).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="Summary" Text="=AVERAGE(Summary[Boolean_Accuracy])" />
+                    <ui:ExcelWriteCell Cell="[&quot;S&quot; + (fileCnt+4).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="Summary" Text="=AVERAGE(Summary[Others_Accuracy])" />
+                    <ui:ExcelWriteCell Cell="[&quot;T&quot; + (fileCnt+4).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="Summary" Text="=AVERAGE(Summary[Total_Accuracy])" />
                     <ui:ExcelSelectRange DisplayName="Select Range" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelSelectRange_2" Range="A1" SheetName="Summary" />
                   </Sequence>
                 </ActivityAction>
