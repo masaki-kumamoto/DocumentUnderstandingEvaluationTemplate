@@ -2,7 +2,7 @@
 :author: Masaki Kumamoto
 :email: masaki.kumamoto@uipath.com
 :revdate: June 10, 2021
-:revnumber: 0.0.9
+:revnumber: 0.1.0
 :revremark: Initial project
 :version-label!:
 :sectids:
