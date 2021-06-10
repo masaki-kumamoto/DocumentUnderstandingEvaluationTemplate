@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2136,5151</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1541,5132</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="144">
@@ -133,7 +133,7 @@
       <AssemblyReference>System.Windows.Forms</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Process" sap:VirtualizedContainerService.HintSize="1270,5086" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Process" sap:VirtualizedContainerService.HintSize="1370,5067" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="ResultFolderWithTimePath" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtActions" />
@@ -151,7 +151,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1228,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_32">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1328,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_32">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_132">
@@ -165,12 +165,12 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <InvokeMethod DisplayName="Invoke method" sap:VirtualizedContainerService.HintSize="1228,134" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="ShowDialog">
+    <InvokeMethod DisplayName="Invoke method" sap:VirtualizedContainerService.HintSize="1328,134" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="ShowDialog">
       <InvokeMethod.TargetObject>
         <InArgument x:TypeArguments="swf:FolderBrowserDialog">[folderSelect]</InArgument>
       </InvokeMethod.TargetObject>
     </InvokeMethod>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1228,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_30">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1328,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_30">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_126">
@@ -200,7 +200,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="actionListExcelFile" sap:VirtualizedContainerService.HintSize="1228,168" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_15" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[excelActionListFilePath]">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="actionListExcelFile" sap:VirtualizedContainerService.HintSize="1328,168" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_15" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[excelActionListFilePath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -216,13 +216,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtActions]" DisplayName="For Each Row (dtActions)" sap:VirtualizedContainerService.HintSize="1228,4243" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtActions]" DisplayName="For Each Row (dtActions)" sap:VirtualizedContainerService.HintSize="1328,4224" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body (dtActions)" sap:VirtualizedContainerService.HintSize="1194,4123" sap2010:WorkflowViewState.IdRef="Sequence_68">
+          <Sequence DisplayName="Body (dtActions)" sap:VirtualizedContainerService.HintSize="1294,4104" sap2010:WorkflowViewState.IdRef="Sequence_68">
             <Sequence.Variables>
               <Variable x:TypeArguments="upamt:TaskData" Name="taskObj" />
               <Variable x:TypeArguments="x:String" Name="taskStatus" />
@@ -243,7 +243,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1152,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_33">
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1252,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_33">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_134">
@@ -257,7 +257,7 @@
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
-            <If Condition="[row(&quot;Status&quot;).ToString = &quot;Completed&quot;]" sap:VirtualizedContainerService.HintSize="1152,2746" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[row(&quot;Status&quot;).ToString = &quot;Completed&quot;]" sap:VirtualizedContainerService.HintSize="1252,2727" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
                 <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="actionListExcelFile" sap:VirtualizedContainerService.HintSize="434,168" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_19" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[excelActionListFilePath]">
                   <ui:ExcelApplicationScope.Body>
@@ -277,13 +277,13 @@
                 </ui:ExcelApplicationScope>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="564,2588" sap2010:WorkflowViewState.IdRef="Sequence_73">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="773,2569" sap2010:WorkflowViewState.IdRef="Sequence_73">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="522,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_28">
+                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="731,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_28">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_119">
@@ -305,8 +305,8 @@
                       </scg:List>
                     </ui:MultipleAssign.AssignOperations>
                   </ui:MultipleAssign>
-                  <upat:GetTaskData TimeoutMs="{x:Null}" DisplayName="Get Task Data" sap:VirtualizedContainerService.HintSize="522,162" sap2010:WorkflowViewState.IdRef="GetTaskData_1" TaskId="[Long.Parse(row(&quot;TaskId&quot;).ToString)]" TaskOutput="[taskObj]" />
-                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="522,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_26">
+                  <upat:GetTaskData TimeoutMs="{x:Null}" DisplayName="Get Task Data" sap:VirtualizedContainerService.HintSize="731,162" sap2010:WorkflowViewState.IdRef="GetTaskData_1" TaskId="[Long.Parse(row(&quot;TaskId&quot;).ToString)]" TaskOutput="[taskObj]" />
+                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="731,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_26">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_117">
@@ -328,7 +328,7 @@
                       </scg:List>
                     </ui:MultipleAssign.AssignOperations>
                   </ui:MultipleAssign>
-                  <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="actionListExcelFile" sap:VirtualizedContainerService.HintSize="522,196" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_18" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[excelActionListFilePath]">
+                  <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="actionListExcelFile" sap:VirtualizedContainerService.HintSize="731,196" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_18" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[excelActionListFilePath]">
                     <ui:ExcelApplicationScope.Body>
                       <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                         <ActivityAction.Argument>
@@ -344,7 +344,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:ExcelApplicationScope>
-                  <If Condition="[taskStatus = &quot;Completed&quot;]" sap:VirtualizedContainerService.HintSize="522,1720" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If Condition="[taskStatus = &quot;Completed&quot;]" sap:VirtualizedContainerService.HintSize="731,1701" sap2010:WorkflowViewState.IdRef="If_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -411,6 +411,9 @@
                         </ui:ExcelApplicationScope>
                       </Sequence>
                     </If.Then>
+                    <If.Else>
+                      <ui:Continue sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Continue_3" />
+                    </If.Else>
                   </If>
                 </Sequence>
               </If.Else>
