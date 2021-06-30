@@ -1,8 +1,8 @@
 = Document Understanding Evaluation Template
 :author: Masaki Kumamoto
 :email: masaki.kumamoto@uipath.com
-:revdate: June 10, 2021
-:revnumber: 0.1.0
+:revdate: June 30, 2021
+:revnumber: 0.2.0
 :revremark: Initial project
 :version-label!:
 :sectids:
@@ -66,7 +66,7 @@ After creating a new project from the Document Understanding Evaluation Template
 
 ### Preparation Steps
 
-. Place `Document.Understanding.Evaluation.Template.X.X.X.nupkg` in the template folder
+. Place `Document.Understanding.Evaluation.Template.X.X.X.nupkg` in the template folder (https://github.com/masaki-kumamoto/DocumentUnderstandingEvaluationTemplate/packages/828024[Download Document.Understanding.Evaluation.Template Nupkg from here])
 - You can identify the template folder below.
 +
 ```
@@ -286,11 +286,17 @@ Extraction/Actual value report sheets (per target documents)::
 |OcrConfidence
 |Confidence level for OCR
 
-|Value
+|ExtractedValue
 |Extracted value by DU
 
-|Actual
-|Validated value (Actual value)
+|ExtractedPage
+|Page number which include extracted value
+
+|ActualValue
+|Validated value
+
+|ActualPage
+|Page number which include validated value
 
 |isCorrect
 |If the extracted value is correct or not
@@ -342,7 +348,10 @@ Actual value report sheets (per target documents)::
 |FieldName
 |Field name
 
-|Actual
-|Validated value (Actual value)
+|ActualValue
+|Validated value
+
+|ActualPage
+|Page number which include validated value
 
 |===

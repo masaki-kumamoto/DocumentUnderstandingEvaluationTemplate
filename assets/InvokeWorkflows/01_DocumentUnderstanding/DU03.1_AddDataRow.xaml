@@ -8,10 +8,10 @@
   <this:DU03_1_AddDataRow._fieldName>
     <InArgument x:TypeArguments="x:String" />
   </this:DU03_1_AddDataRow._fieldName>
-  <sap:VirtualizedContainerService.HintSize>1529,1968</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1687,1999</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="62">
+    <scg:List x:TypeArguments="x:String" Capacity="32">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System</x:String>
@@ -47,7 +47,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="45">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -94,7 +94,7 @@
       <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add data row" sap:VirtualizedContainerService.HintSize="1539,1903" sap2010:WorkflowViewState.IdRef="Sequence_62">
+  <Sequence DisplayName="Add data row" sap:VirtualizedContainerService.HintSize="1689,1934" sap2010:WorkflowViewState.IdRef="Sequence_62">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Single" Name="_confidence" />
       <Variable x:TypeArguments="x:Boolean" Name="_isMissing" />
@@ -103,13 +103,14 @@
       <Variable x:TypeArguments="p:ResultsValue[]" Name="_values" />
       <Variable x:TypeArguments="x:String" Name="_fieldType" />
       <Variable x:TypeArguments="x:Int32" Name="valuesCnt" />
+      <Variable x:TypeArguments="x:String" Name="_page" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1497,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_16">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1647,222" sap2010:WorkflowViewState.IdRef="MultipleAssign_16">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_50">
@@ -144,10 +145,18 @@
               <InArgument x:TypeArguments="x:String">%[N/A]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_69">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[_page]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">%[N/A]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <If Condition="[_isMissing]" DisplayName="Data Operation" sap:VirtualizedContainerService.HintSize="1497,1580" sap2010:WorkflowViewState.IdRef="If_13">
+    <If Condition="[_isMissing]" DisplayName="Data Operation" sap:VirtualizedContainerService.HintSize="1647,1580" sap2010:WorkflowViewState.IdRef="If_13">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -175,11 +184,11 @@
               </scg:List>
             </ui:MultipleAssign.AssignOperations>
           </ui:MultipleAssign>
-          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{_fieldName,_value}]" DataTable="[dtExtractedResult]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{_fieldName,_value,_page}]" DataTable="[dtExtractedResult]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <If Condition="[_fieldType = &quot;Table&quot;]" sap:VirtualizedContainerService.HintSize="1076,1422" sap2010:WorkflowViewState.IdRef="If_10">
+        <If Condition="[_fieldType = &quot;Table&quot;]" sap:VirtualizedContainerService.HintSize="1226,1422" sap2010:WorkflowViewState.IdRef="If_10">
           <If.Then>
             <Sequence sap2010:Annotation.AnnotationText="" sap:VirtualizedContainerService.HintSize="577,1264" sap2010:WorkflowViewState.IdRef="Sequence_64">
               <Sequence.Variables>
@@ -304,13 +313,13 @@
             </Sequence>
           </If.Then>
           <If.Else>
-            <Sequence DisplayName="Non Table" sap:VirtualizedContainerService.HintSize="454,719" sap2010:WorkflowViewState.IdRef="Sequence_67">
+            <Sequence DisplayName="Non Table" sap:VirtualizedContainerService.HintSize="604,1032" sap2010:WorkflowViewState.IdRef="Sequence_67">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="412,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_25">
+              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="562,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_25">
                 <ui:MultipleAssign.AssignOperations>
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_62">
@@ -324,19 +333,37 @@
                   </scg:List>
                 </ui:MultipleAssign.AssignOperations>
               </ui:MultipleAssign>
-              <ui:ForEach x:TypeArguments="p:ResultsValue" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="412,325" sap2010:WorkflowViewState.IdRef="ForEach`1_16" Values="[_values]">
+              <ui:ForEach x:TypeArguments="p:ResultsValue" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="562,639" sap2010:WorkflowViewState.IdRef="ForEach`1_16" Values="[_values]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="p:ResultsValue">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="p:ResultsValue" Name="resultValue" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,190" sap2010:WorkflowViewState.IdRef="Sequence_70">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,505" sap2010:WorkflowViewState.IdRef="Sequence_70">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_29">
+                      <If Condition="[resultValue.Reference.Tokens.Length &lt;&gt; 0]" sap:VirtualizedContainerService.HintSize="484,275" sap2010:WorkflowViewState.IdRef="If_14">
+                        <If.Then>
+                          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_30">
+                            <ui:MultipleAssign.AssignOperations>
+                              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_71">
+                                  <ui:AssignOperation.To>
+                                    <OutArgument x:TypeArguments="x:String">[_page]</OutArgument>
+                                  </ui:AssignOperation.To>
+                                  <ui:AssignOperation.Value>
+                                    <InArgument x:TypeArguments="x:String">[(resultValue.Reference.Tokens(0).Page + 1).ToString]</InArgument>
+                                  </ui:AssignOperation.Value>
+                                </ui:AssignOperation>
+                              </scg:List>
+                            </ui:MultipleAssign.AssignOperations>
+                          </ui:MultipleAssign>
+                        </If.Then>
+                      </If>
+                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="484,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_29">
                         <ui:MultipleAssign.AssignOperations>
                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_68">
@@ -360,8 +387,8 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ForEach>
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="412,62" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[_fieldName  + &quot;=&quot; + _value]" />
-              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{_fieldName,_value}]" DataTable="[dtExtractedResult]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="412,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="562,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[_fieldName  + &quot;=&quot; + _value]" />
+              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{_fieldName,_value,_page}]" DataTable="[dtExtractedResult]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="562,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
             </Sequence>
           </If.Else>
         </If>

@@ -5,10 +5,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1541,5132</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1360,5578</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="144">
+    <scg:List x:TypeArguments="x:String" Capacity="73">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -85,7 +85,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="88">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="90">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -131,15 +131,21 @@
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
       <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Process" sap:VirtualizedContainerService.HintSize="1370,5067" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Process" sap:VirtualizedContainerService.HintSize="1370,5513" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="ResultFolderWithTimePath" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtActions" />
       <Variable x:TypeArguments="x:String" Name="excelActionListFilePath" />
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;OC_FolderPath&quot;).ToString]" Name="OC_FolderPath" />
-      <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;SB_BacketName&quot;).ToString]" Name="SB_BacketName" />
+      <Variable x:TypeArguments="x:String" Name="SB_BucketName">
+        <Variable.Default>
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SB_BucketName&quot;).ToString" />
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="s:String[]" Name="DocPathArray" />
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;ResultExcelFileName_Infix&quot;).ToString]" Name="ResultExcelFileName_Infix" />
       <Variable x:TypeArguments="swf:FolderBrowserDialog" Default="[new System.Windows.Forms.FolderBrowserDialog]" Name="folderSelect" />
@@ -216,13 +222,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtActions]" DisplayName="For Each Row (dtActions)" sap:VirtualizedContainerService.HintSize="1328,4224" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtActions]" DisplayName="For Each Row (dtActions)" sap:VirtualizedContainerService.HintSize="1328,4670" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body (dtActions)" sap:VirtualizedContainerService.HintSize="1294,4104" sap2010:WorkflowViewState.IdRef="Sequence_68">
+          <Sequence DisplayName="Body (dtActions)" sap:VirtualizedContainerService.HintSize="1294,4550" sap2010:WorkflowViewState.IdRef="Sequence_68">
             <Sequence.Variables>
               <Variable x:TypeArguments="upamt:TaskData" Name="taskObj" />
               <Variable x:TypeArguments="x:String" Name="taskStatus" />
@@ -372,7 +378,7 @@
                             </scg:List>
                           </ui:MultipleAssign.AssignOperations>
                         </ui:MultipleAssign>
-                        <ucas:DownloadStorageFile TimeoutMS="{x:Null}" Destination="[downloadZipFilePath]" DisplayName="Download Storage File" FolderPath="[OC_FolderPath]" sap:VirtualizedContainerService.HintSize="444,185" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_1" Path="[ValidatedExtractionResultsPath]" StorageBucketName="[SB_BacketName]" />
+                        <ucas:DownloadStorageFile TimeoutMS="{x:Null}" Destination="[downloadZipFilePath]" DisplayName="Download Storage File" FolderPath="[OC_FolderPath]" sap:VirtualizedContainerService.HintSize="444,185" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_1" Path="[ValidatedExtractionResultsPath]" StorageBucketName="[SB_BucketName]" />
                         <uascw:ExtractFiles Password="{x:Null}" CodePage="Default" DestinationFolder="assets\Temp\" DestinationFolderInfo="[extractedZipFolderPath]" DisplayName="Extract/Unzip Files" ExtractToADedicatedFolder="True" FileToExtract="[downloadZipFilePath]" sap:VirtualizedContainerService.HintSize="444,205" sap2010:WorkflowViewState.IdRef="ExtractFiles_1" SkipUnsupportedFiles="False" />
                         <ui:ReadTextFile Content="[jsonText]" DisplayName="Read Text File" FileName="[extractedZipFolderPath.ToString + &quot;\output_results.json&quot;]" sap:VirtualizedContainerService.HintSize="444,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
                         <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="444,79" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[downloadZipFilePath]" />
@@ -418,17 +424,18 @@
                 </Sequence>
               </If.Else>
             </If>
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1152,1107" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[DocPathArray]">
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1252,1553" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[DocPathArray]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="docPath" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,973" sap2010:WorkflowViewState.IdRef="Sequence_71">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,1419" sap2010:WorkflowViewState.IdRef="Sequence_71">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="resultExcelName" />
                       <Variable x:TypeArguments="x:Boolean" Name="isResultExcel" />
                       <Variable x:TypeArguments="sd:DataTable" Name="dtActualValue" />
+                      <Variable x:TypeArguments="sd:DataTable" Name="dtActualPage" />
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -450,12 +457,12 @@
                       </ui:MultipleAssign.AssignOperations>
                     </ui:MultipleAssign>
                     <ui:IsMatch BuilderPattern="[\d_]+AccuracyEvaluation_.+OCR.xlsx" DisplayName="Is Match" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="IsMatch_1" Input="[resultExcelName]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;[\\d_]+AccuracyEvaluation_.+OCR.xlsx&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[&quot;[\d_]+&quot; + ResultExcelFileName_Infix + &quot;_.+OCR.xlsx&quot;]" RegexOption="IgnoreCase" Result="[isResultExcel]" />
-                    <If Condition="[isResultExcel]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If Condition="[isResultExcel]" sap:VirtualizedContainerService.HintSize="484,218" sap2010:WorkflowViewState.IdRef="If_2">
                       <If.Else>
                         <ui:Continue sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Continue_2" />
                       </If.Else>
                     </If>
-                    <ui:FilterDataTable DataTable="[dtExtractedResult]" DisplayName="Filter Data Table" sap:VirtualizedContainerService.HintSize="484,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtActualValue]" SelectColumnsMode="Keep">
+                    <ui:FilterDataTable DataTable="[dtExtractedResult]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="484,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtActualValue]" SelectColumnsMode="Keep">
                       <ui:FilterDataTable.Filters>
                         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                           <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
@@ -463,7 +470,7 @@
                       </ui:FilterDataTable.Filters>
                       <ui:FilterDataTable.SelectColumns>
                         <scg:List x:TypeArguments="InArgument" Capacity="4">
-                          <InArgument x:TypeArguments="x:String">["Actual"]</InArgument>
+                          <InArgument x:TypeArguments="x:String">["ActualValue"]</InArgument>
                         </scg:List>
                       </ui:FilterDataTable.SelectColumns>
                     </ui:FilterDataTable>
@@ -473,7 +480,29 @@
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                           </ActivityAction.Argument>
-                          <ui:ExcelWriteRange AddHeaders="True" DataTable="[dtActualValue]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="[fileName]" StartingCell="I2" />
+                          <ui:ExcelWriteRange AddHeaders="True" DataTable="[dtActualValue]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="[fileName]" StartingCell="J2" />
+                        </ActivityAction>
+                      </ui:ExcelApplicationScope.Body>
+                    </ui:ExcelApplicationScope>
+                    <ui:FilterDataTable DataTable="[dtExtractedResult]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="484,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtActualPage]" SelectColumnsMode="Keep">
+                      <ui:FilterDataTable.Filters>
+                        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                          <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
+                        </scg:List>
+                      </ui:FilterDataTable.Filters>
+                      <ui:FilterDataTable.SelectColumns>
+                        <scg:List x:TypeArguments="InArgument" Capacity="4">
+                          <InArgument x:TypeArguments="x:String">["ActualPage"]</InArgument>
+                        </scg:List>
+                      </ui:FilterDataTable.SelectColumns>
+                    </ui:FilterDataTable>
+                    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="484,196" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_20" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[docPath]">
+                      <ui:ExcelApplicationScope.Body>
+                        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                          </ActivityAction.Argument>
+                          <ui:ExcelWriteRange AddHeaders="True" DataTable="[dtActualPage]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_4" SheetName="[fileName]" StartingCell="K2" />
                         </ActivityAction>
                       </ui:ExcelApplicationScope.Body>
                     </ui:ExcelApplicationScope>
