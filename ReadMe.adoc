@@ -1,8 +1,8 @@
 = Document Understanding Evaluation Template
 :author: Masaki Kumamoto
 :email: masaki.kumamoto@uipath.com
-:revdate: July 16, 2021
-:revnumber: 0.2.1
+:revdate: March 15, 2022
+:revnumber: 0.2.3
 :revremark: Initial project
 :version-label!:
 :sectids:
@@ -131,7 +131,8 @@ If not, Enable “Extraction Only” sequence
 ### Execution Steps
 
 . Run `01_ExtractDocumentsData.xaml`
-- You should stop the OneDrive sync function while the process is running otherwise an error may occur. 
+- You should stop the OneDrive sync function while the process is running otherwise an error may occur.
+- Make sure “Microsoft Excel” is not running even in background. This would cause unitability of the workflow somehow.
 - It takes about 1-2 minutes to process each document. +
 (It would take more with “Debug” so “Run” is recommended)
 - After the execution is complete, Excel reports for each OCR set in Config.xlsx and the Document Validation Action in Action Center will be generated.
@@ -355,3 +356,36 @@ Actual value report sheets (per target documents)::
 |Page number which include validated value
 
 |===
+
+<<<
+
+## Specification & Known issue
+
+### Specification
+
+- If there are multiple candidate extraction results in one field, the result with the highest Confidence and OcrConfidence will be listed in the reports.
+
+### Known issues
+
+- If “Microsoft Excel” is running even in background when executing the workflow, it would cause unitability of the workflow somehow.
+- If you use ML Extractor and there is Table fields in the taxonomy, it occurs error when creating reports because the workflow currently can’t deal with dynamic number of field in case the numbers of rows got extracted is smaller than the actual numbers of rows in the document. You can work around the issue by adding rows with proper field name and empty values manually before running the workflow. Contact Masaki.Kumamoto@uipath.com if help is needed.
+
+<<<
+
+## Roadmap
+
+- “Process Template” to “Test Automation” to enable UiPath’s testing capability
+- Straight Through Processing (STP) rate in the report
+** Ability to add business logic verification in the template
+** Business logic verification result for each field level
+- Add overview reasons why it failed to extract the right text from documents
+** Not being able to Identify the right one
+** Identified as minor options
+** Partially wrong matching
+** Missing some
+- Auto-rename file instead of throw exception on file name over 31 chars (excel sheet name limit)
+- Add Classification & Extraction processing time for in the report
+- Training function for ML Classifier / Extractor
+- Progress dialog (Status bar)
+- More visualized report (HTML) <= This would make the workflow more stable.
+
