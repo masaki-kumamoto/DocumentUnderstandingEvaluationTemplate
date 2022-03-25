@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1193,10909</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2134,10989</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="62">
@@ -118,10 +118,9 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
       <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Process" sap:VirtualizedContainerService.HintSize="1071,10844" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Process" sap:VirtualizedContainerService.HintSize="1071,10924" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;TargetDocumentsFolderPath&quot;).ToString]" Name="TargetDocumentsFolderPath" />
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;ResultExcelFileName_Infix&quot;).ToString]" Name="ResultExcelFileName_Infix" />
@@ -129,11 +128,7 @@
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;OC_FolderPath&quot;).ToString]" Name="OC_FolderPath" />
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;AC_ActionCatalog&quot;).ToString]" Name="AC_ActionCatalog" />
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;AC_AssignUserEmail&quot;).ToString]" Name="AC_AssignUserEmail" />
-      <Variable x:TypeArguments="x:String" Name="SB_BucketName">
-        <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SB_BucketName&quot;).ToString" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;SB_BucketName&quot;).ToString]" Name="SB_BucketName" />
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;SB_BucketDirectoryPath&quot;).ToString]" Name="SB_BucketDirectoryPath" />
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;DU_DocumentTypeId&quot;).ToString]" Name="DU_DocumentTypeId" />
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;DU_ApiKey&quot;).ToString]" Name="DU_ApiKey" />
@@ -215,7 +210,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1029,222" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1029,224" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -262,9 +257,9 @@
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
     <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="1029,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[ResultFolderWithTimePath]" />
-    <If Condition="[String.IsNullOrEmpty(TargetDocumentsFolderPath) OrElse String.IsNullOrWhiteSpace(TargetDocumentsFolderPath)]" sap:VirtualizedContainerService.HintSize="1029,237" sap2010:WorkflowViewState.IdRef="If_16">
+    <If Condition="[String.IsNullOrEmpty(TargetDocumentsFolderPath) OrElse String.IsNullOrWhiteSpace(TargetDocumentsFolderPath)]" sap:VirtualizedContainerService.HintSize="1029,255" sap2010:WorkflowViewState.IdRef="If_16">
       <If.Then>
-        <ui:SelectFolder DisplayName="Select Folder" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SelectFolder_1" SelectedFolder="[TargetDocumentsFolderPath]" />
+        <ui:SelectFolder DisplayName="Select Folder" sap:VirtualizedContainerService.HintSize="334,78" sap2010:WorkflowViewState.IdRef="SelectFolder_1" SelectedFolder="[TargetDocumentsFolderPath]" />
       </If.Then>
     </If>
     <Assign sap:VirtualizedContainerService.HintSize="1029,60" sap2010:WorkflowViewState.IdRef="Assign_8">
@@ -301,13 +296,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </p:LoadTaxonomy>
-    <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Boolean)" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1029,9253" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[dictOCR_Use]">
+    <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Boolean)" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1029,9313" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[dictOCR_Use]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Boolean)">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Boolean)" Name="OCR_Use" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body of For Each (dictOCR_Use)" sap:VirtualizedContainerService.HintSize="993,9119" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <Sequence DisplayName="Body of For Each (dictOCR_Use)" sap:VirtualizedContainerService.HintSize="993,9189" sap2010:WorkflowViewState.IdRef="Sequence_18">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Int32" Name="fileCnt" />
               <Variable x:TypeArguments="x:String" Name="resultExcelFilePath" />
@@ -324,7 +319,7 @@
                 <ui:Continue sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Continue_2" />
               </If.Else>
             </If>
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="951,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_14">
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="951,162" sap2010:WorkflowViewState.IdRef="MultipleAssign_14">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_35">
@@ -355,13 +350,13 @@
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
             <ui:CopyFile ContinueOnError="{x:Null}" Destination="[resultExcelFilePath]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="951,157" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="False" Path="[excelReportSummaryTemplatePath]" />
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each (DocPathArray)" sap:VirtualizedContainerService.HintSize="951,7691" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[DocPathArray]">
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each (DocPathArray)" sap:VirtualizedContainerService.HintSize="951,7759" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[DocPathArray]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="docPath" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="For Each (docPathArray)" sap:VirtualizedContainerService.HintSize="915,7557" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence DisplayName="For Each (docPathArray)" sap:VirtualizedContainerService.HintSize="915,7635" sap2010:WorkflowViewState.IdRef="Sequence_7">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="uiaam:DocumentValidationActionData" Name="actionObject" />
                       <Variable x:TypeArguments="x:String" Name="fileName" />
@@ -383,7 +378,7 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="873,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_23">
+                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="873,100" sap2010:WorkflowViewState.IdRef="MultipleAssign_23">
                       <ui:MultipleAssign.AssignOperations>
                         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_112">
@@ -402,7 +397,7 @@
                         <ui:Continue sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Continue_3" />
                       </If.Then>
                     </If>
-                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="873,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
+                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="873,100" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
                       <ui:MultipleAssign.AssignOperations>
                         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_70">
@@ -468,9 +463,9 @@
                         <InArgument x:TypeArguments="x:Single" x:Key="DU_AutoVerifyMinimumThreshold_OcrConfidence">[DU_AutoVerifyMinimumThreshold_OcrConfidence]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
-                    <If Condition="[AL_UseExistingActionListExcel]" sap:VirtualizedContainerService.HintSize="873,1046" sap2010:WorkflowViewState.IdRef="If_20">
+                    <If Condition="[AL_UseExistingActionListExcel]" sap:VirtualizedContainerService.HintSize="873,1048" sap2010:WorkflowViewState.IdRef="If_20">
                       <If.Then>
-                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="514,869" sap2010:WorkflowViewState.IdRef="Sequence_69">
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="545,871" sap2010:WorkflowViewState.IdRef="Sequence_69">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="sd:DataTable" Name="dtExistingActualValues" />
                           </Sequence.Variables>
@@ -479,7 +474,7 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="472,168" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_23" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[AL_ExistingActionListExcelPath]">
+                          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="503,168" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_23" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[AL_ExistingActionListExcelPath]">
                             <ui:ExcelApplicationScope.Body>
                               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                 <ActivityAction.Argument>
@@ -489,20 +484,20 @@
                               </ActivityAction>
                             </ui:ExcelApplicationScope.Body>
                           </ui:ExcelApplicationScope>
-                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtExtractedResult]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="472,569" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtExtractedResult]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="503,571" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                             <ui:ForEachRow.Body>
                               <ActivityAction x:TypeArguments="sd:DataRow">
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                                 </ActivityAction.Argument>
-                                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,449" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="469,451" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                                   <TryCatch.Variables>
                                     <Variable x:TypeArguments="x:String" Name="fieldName" />
                                     <Variable x:TypeArguments="x:String" Name="actualValue" />
                                     <Variable x:TypeArguments="x:String" Name="actualPage" />
                                   </TryCatch.Variables>
                                   <TryCatch.Try>
-                                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,222" sap2010:WorkflowViewState.IdRef="MultipleAssign_27">
+                                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,224" sap2010:WorkflowViewState.IdRef="MultipleAssign_27">
                                       <ui:MultipleAssign.AssignOperations>
                                         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_121">
@@ -550,7 +545,7 @@
                                     </ui:MultipleAssign>
                                   </TryCatch.Try>
                                   <TryCatch.Catches>
-                                    <Catch x:TypeArguments="s:IndexOutOfRangeException" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                                    <Catch x:TypeArguments="s:IndexOutOfRangeException" sap:VirtualizedContainerService.HintSize="435,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -573,7 +568,7 @@
                       </If.Then>
                     </If>
                     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="873,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[&quot;[&quot; + OCR_Use.Key + &quot; : &quot; + fileName + &quot;] Writing Results in Excel sheets&quot;]" />
-                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="873,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_22">
+                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="873,162" sap2010:WorkflowViewState.IdRef="MultipleAssign_22">
                       <ui:MultipleAssign.AssignOperations>
                         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_55">
@@ -619,13 +614,13 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:ExcelApplicationScope>
-                    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="resultExcelFilePath" sap:VirtualizedContainerService.HintSize="873,1475" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[resultExcelFilePath]">
+                    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="resultExcelFilePath" sap:VirtualizedContainerService.HintSize="873,1545" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[resultExcelFilePath]">
                       <ui:ExcelApplicationScope.Body>
                         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="839,1366" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="839,1436" sap2010:WorkflowViewState.IdRef="Sequence_37">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -639,16 +634,16 @@
                                 <ui:ExcelAutoFillRange DisplayName="Auto Fill Range" FillRange="[reportDetail_isCorrectCol + &quot;3:&quot; + reportDetail_isCorrectCol + lastExcelRow.ToString]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelAutoFillRange_5" SheetName="[fileName]" SourceRange="[reportDetail_isCorrectCol + &quot;3&quot;]" />
                               </If.Then>
                             </If>
-                            <If Condition="[fileCnt = 1]" sap:VirtualizedContainerService.HintSize="797,590" sap2010:WorkflowViewState.IdRef="If_13">
+                            <If Condition="[fileCnt = 1]" sap:VirtualizedContainerService.HintSize="797,660" sap2010:WorkflowViewState.IdRef="If_13">
                               <If.Then>
-                                <Sequence sap:VirtualizedContainerService.HintSize="376,340" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                                <Sequence sap:VirtualizedContainerService.HintSize="376,503" sap2010:WorkflowViewState.IdRef="Sequence_43">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <ui:ExcelReadRange AddHeaders="True" DataTable="[dtSummary]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_6" Range="B3" SheetName="Summary" />
-                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{excelTableName,&#xA;fileName,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),D$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),E$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),F$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),G$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),H$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),I$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),J$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),K$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),L$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),M$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),N$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),O$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),P$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),Q$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=[@[Boolean_Correct]]/[@[Boolean_Total]]&quot;,&#xA;&quot;=SUM([@[Text_Correct]],[@[Number_Correct]],[@[Date_Correct]],[@[Name_Correct]],[@[Address_Correct]],[@[Set_Correct]])/SUM([@[Text_Total]],[@[Number_Total]],[@[Date_Total]],[@[Name_Total]],[@[Address_Total]],[@[Set_Total]])&quot;,&#xA;&quot;=SUM([@[Text_Correct]],[@[Number_Correct]],[@[Date_Correct]],[@[Name_Correct]],[@[Address_Correct]],[@[Set_Correct]],[@[Boolean_Correct]])/SUM([@[Text_Total]],[@[Number_Total]],[@[Date_Total]],[@[Name_Total]],[@[Address_Total]],[@[Set_Total]],[@[Boolean_Total]])&quot;}]" DataTable="[dtSummary]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_5" />
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{excelTableName,&#xA;fileName,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),D$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),E$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),F$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),G$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),H$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),I$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),J$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),K$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),L$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),M$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),N$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),O$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),P$2)&quot;,&#xA;&quot;=COUNTIFS(INDIRECT([@TableName] &amp; &quot;&quot;[FieldType]&quot;&quot;),Q$2,INDIRECT([@TableName] &amp; &quot;&quot;[isCorrect]&quot;&quot;),TRUE)&quot;,&#xA;&quot;=[@[Boolean_Correct]]/[@[Boolean_Total]]&quot;,&#xA;&quot;=SUM([@[Text_Correct]],[@[Number_Correct]],[@[Date_Correct]],[@[Name_Correct]],[@[Address_Correct]],[@[Set_Correct]])/SUM([@[Text_Total]],[@[Number_Total]],[@[Date_Total]],[@[Name_Total]],[@[Address_Total]],[@[Set_Total]])&quot;,&#xA;&quot;=SUM([@[Text_Correct]],[@[Number_Correct]],[@[Date_Correct]],[@[Name_Correct]],[@[Address_Correct]],[@[Set_Correct]],[@[Boolean_Correct]])/SUM([@[Text_Total]],[@[Number_Total]],[@[Date_Total]],[@[Name_Total]],[@[Address_Total]],[@[Set_Total]],[@[Boolean_Total]])&quot;}]" DataTable="[dtSummary]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="AddDataRow_5" />
                                   <ui:ExcelWriteRange AddHeaders="False" DataTable="[dtSummary]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_6" SheetName="Summary" StartingCell="[&quot;B&quot; + (fileCnt+3).ToString]" />
                                 </Sequence>
                               </If.Then>
