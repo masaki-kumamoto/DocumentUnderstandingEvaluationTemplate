@@ -1,14 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="_01_Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p2="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uiaam="clr-namespace:UiPath.IntelligentOCR.Activities.Actions.Model;assembly=UiPath.IntelligentOCR.Activities" xmlns:upamt="clr-namespace:UiPath.Persistence.Activities.Model.Task;assembly=UiPath.Persistence.Activities" xmlns:upat="clr-namespace:UiPath.Persistence.Activities.Tasks;assembly=UiPath.Persistence.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="_01_Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p2="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uiaam="clr-namespace:UiPath.IntelligentOCR.Activities.Actions.Model;assembly=UiPath.IntelligentOCR.Activities" xmlns:upamt="clr-namespace:UiPath.Persistence.Activities.Model.Task;assembly=UiPath.Persistence.Activities" xmlns:upat="clr-namespace:UiPath.Persistence.Activities.Tasks;assembly=UiPath.Persistence.Activities" xmlns:uta="clr-namespace:UiPath.Testing.Activities;assembly=UiPath.Testing.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2134,11051</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1381,11738</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="62">
+    <scg:List x:TypeArguments="x:String" Capacity="64">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -71,10 +71,12 @@
       <x:String>Microsoft.Office.Interop.Excel</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Testing.Activities</x:String>
+      <x:String>UiPath.Testing</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -118,9 +120,12 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
       <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Process" sap:VirtualizedContainerService.HintSize="1071,10986" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Process" sap:VirtualizedContainerService.HintSize="1071,11673" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;TargetDocumentsFolderPath&quot;).ToString]" Name="TargetDocumentsFolderPath" />
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;ResultExcelFileName_Infix&quot;).ToString]" Name="ResultExcelFileName_Infix" />
@@ -296,13 +301,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </p:LoadTaxonomy>
-    <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Boolean)" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1029,9375" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[dictOCR_Use]">
+    <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Boolean)" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1029,9943" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[dictOCR_Use]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Boolean)">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Boolean)" Name="OCR_Use" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body of For Each (dictOCR_Use)" sap:VirtualizedContainerService.HintSize="993,9251" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <Sequence DisplayName="Body of For Each (dictOCR_Use)" sap:VirtualizedContainerService.HintSize="993,9819" sap2010:WorkflowViewState.IdRef="Sequence_18">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Int32" Name="fileCnt" />
               <Variable x:TypeArguments="x:String" Name="resultExcelFilePath" />
@@ -330,7 +335,7 @@
                       <InArgument x:TypeArguments="x:String">[StartTimestampPrefix + "_" + ResultExcelFileName_Infix +"_" + OCR_Use.Key + ".xlsx"]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_69">
+                  <ui:AssignOperation sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AssignOperation_69">
                     <ui:AssignOperation.To>
                       <OutArgument x:TypeArguments="x:Int32">[fileCnt]</OutArgument>
                     </ui:AssignOperation.To>
@@ -350,13 +355,13 @@
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
             <ui:CopyFile ContinueOnError="{x:Null}" Destination="[resultExcelFilePath]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="951,157" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="False" Path="[excelReportSummaryTemplatePath]" />
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each (DocPathArray)" sap:VirtualizedContainerService.HintSize="951,7821" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[DocPathArray]">
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each (DocPathArray)" sap:VirtualizedContainerService.HintSize="951,8270" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[DocPathArray]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="docPath" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="For Each (docPathArray)" sap:VirtualizedContainerService.HintSize="915,7697" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence DisplayName="For Each (docPathArray)" sap:VirtualizedContainerService.HintSize="915,8146" sap2010:WorkflowViewState.IdRef="Sequence_7">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="uiaam:DocumentValidationActionData" Name="actionObject" />
                       <Variable x:TypeArguments="x:String" Name="fileName" />
@@ -400,7 +405,7 @@
                     <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="873,100" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
                       <ui:MultipleAssign.AssignOperations>
                         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
-                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_70">
+                          <ui:AssignOperation sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AssignOperation_70">
                             <ui:AssignOperation.To>
                               <OutArgument x:TypeArguments="x:Int32">[fileCnt]</OutArgument>
                             </ui:AssignOperation.To>
@@ -463,9 +468,9 @@
                         <InArgument x:TypeArguments="x:Single" x:Key="DU_AutoVerifyMinimumThreshold_OcrConfidence">[DU_AutoVerifyMinimumThreshold_OcrConfidence]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
-                    <If Condition="[AL_UseExistingActionListExcel]" sap:VirtualizedContainerService.HintSize="873,1048" sap2010:WorkflowViewState.IdRef="If_20">
+                    <If Condition="[AL_UseExistingActionListExcel]" sap:VirtualizedContainerService.HintSize="873,1334" sap2010:WorkflowViewState.IdRef="If_20">
                       <If.Then>
-                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="545,871" sap2010:WorkflowViewState.IdRef="Sequence_69">
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="690,1157" sap2010:WorkflowViewState.IdRef="Sequence_69">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="sd:DataTable" Name="dtExistingActualValues" />
                           </Sequence.Variables>
@@ -474,7 +479,7 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="503,168" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_23" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[AL_ExistingActionListExcelPath]">
+                          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="648,168" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_23" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[AL_ExistingActionListExcelPath]">
                             <ui:ExcelApplicationScope.Body>
                               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                 <ActivityAction.Argument>
@@ -484,68 +489,116 @@
                               </ActivityAction>
                             </ui:ExcelApplicationScope.Body>
                           </ui:ExcelApplicationScope>
-                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtExtractedResult]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="503,571" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtExtractedResult]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="648,857" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                             <ui:ForEachRow.Body>
                               <ActivityAction x:TypeArguments="sd:DataRow">
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                                 </ActivityAction.Argument>
-                                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="469,451" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="614,737" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                                   <TryCatch.Variables>
                                     <Variable x:TypeArguments="x:String" Name="fieldName" />
                                     <Variable x:TypeArguments="x:String" Name="actualValue" />
                                     <Variable x:TypeArguments="x:String" Name="actualPage" />
+                                    <Variable x:TypeArguments="x:String" Name="extractedValue" />
+                                    <Variable x:TypeArguments="x:String" Name="ocrConfidence" />
+                                    <Variable x:TypeArguments="x:String" Name="confidence" />
                                   </TryCatch.Variables>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
                                   <TryCatch.Try>
-                                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,224" sap2010:WorkflowViewState.IdRef="MultipleAssign_27">
-                                      <ui:MultipleAssign.AssignOperations>
-                                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_121">
-                                            <ui:AssignOperation.To>
-                                              <OutArgument x:TypeArguments="x:String">[fieldName]</OutArgument>
-                                            </ui:AssignOperation.To>
-                                            <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:String">[CurrentRow("FieldName").ToString]</InArgument>
-                                            </ui:AssignOperation.Value>
-                                          </ui:AssignOperation>
-                                          <ui:AssignOperation sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AssignOperation_122">
-                                            <ui:AssignOperation.To>
-                                              <OutArgument x:TypeArguments="x:String">[actualValue]</OutArgument>
-                                            </ui:AssignOperation.To>
-                                            <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:String">[dtExistingActualValues.Select("FieldName = '"+fieldName+"'")(0)("ActualValue").ToString]</InArgument>
-                                            </ui:AssignOperation.Value>
-                                          </ui:AssignOperation>
-                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_123">
-                                            <ui:AssignOperation.To>
-                                              <OutArgument x:TypeArguments="x:String">[actualPage]</OutArgument>
-                                            </ui:AssignOperation.To>
-                                            <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:String">[dtExistingActualValues.Select("FieldName = '"+fieldName+"'")(0)("ActualPage").ToString]</InArgument>
-                                            </ui:AssignOperation.Value>
-                                          </ui:AssignOperation>
-                                          <ui:AssignOperation sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AssignOperation_124">
-                                            <ui:AssignOperation.To>
-                                              <OutArgument x:TypeArguments="x:Object">[CurrentRow("ActualValue")]</OutArgument>
-                                            </ui:AssignOperation.To>
-                                            <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:Object">[actualValue]</InArgument>
-                                            </ui:AssignOperation.Value>
-                                          </ui:AssignOperation>
-                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_125">
-                                            <ui:AssignOperation.To>
-                                              <OutArgument x:TypeArguments="x:Object">[CurrentRow("ActualPage")]</OutArgument>
-                                            </ui:AssignOperation.To>
-                                            <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:Object">[actualPage]</InArgument>
-                                            </ui:AssignOperation.Value>
-                                          </ui:AssignOperation>
-                                        </scg:List>
-                                      </ui:MultipleAssign.AssignOperations>
-                                    </ui:MultipleAssign>
+                                    <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="576,510" sap2010:WorkflowViewState.IdRef="Sequence_70">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="534,317" sap2010:WorkflowViewState.IdRef="MultipleAssign_28">
+                                        <ui:MultipleAssign.AssignOperations>
+                                          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_126">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">[fieldName]</OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">[CurrentRow("FieldName").ToString]</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AssignOperation_127">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">[actualValue]</OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">[dtExistingActualValues.Select("FieldName = '"+fieldName+"'")(0)("ActualValue").ToString]</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_131">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">[extractedValue]</OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">[dtExistingActualValues.Select("FieldName = '"+fieldName+"'")(0)("ExtractedValue").ToString]</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_128">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">[actualPage]</OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">[dtExistingActualValues.Select("FieldName = '"+fieldName+"'")(0)("ActualPage").ToString]</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_132">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">[confidence]</OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">[dtExistingActualValues.Select("FieldName = '"+fieldName+"'")(0)("confidence").ToString]</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_133">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">[ocrConfidence]</OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">[dtExistingActualValues.Select("FieldName = '"+fieldName+"'")(0)("OcrConfidence").ToString]</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AssignOperation_129">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:Object">[CurrentRow("ActualValue")]</OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:Object">[actualValue]</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_130">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:Object">[CurrentRow("ActualPage")]</OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:Object">[actualPage]</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                          </scg:List>
+                                        </ui:MultipleAssign.AssignOperations>
+                                      </ui:MultipleAssign>
+                                      <uta:VerifyExpressionWithOperator KeepScreenshots="{x:Null}" Result="{x:Null}" ScreenshotsPath="{x:Null}" AlternativeVerificationTitle="[fileName + &quot; [&quot; + fieldName + &quot;] &quot; + extractedValue]" ContinueOnFailure="True" DisplayName="Verify Expression with Operator" sap:VirtualizedContainerService.HintSize="534,61" sap2010:WorkflowViewState.IdRef="VerifyExpressionWithOperator_1" Operator="Equality" OutputMessageFormat="[&quot;Confidence : &quot; + confidence + &quot;, OcrConfidence : &quot; +  ocrConfidence + &quot;, ExtractedVale : &quot; + extractedValue]" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False">
+                                        <uta:VerifyExpressionWithOperator.FirstExpression>
+                                          <InArgument x:TypeArguments="x:String">[extractedValue]</InArgument>
+                                        </uta:VerifyExpressionWithOperator.FirstExpression>
+                                        <uta:VerifyExpressionWithOperator.SecondExpression>
+                                          <InArgument x:TypeArguments="x:String">[actualValue]</InArgument>
+                                        </uta:VerifyExpressionWithOperator.SecondExpression>
+                                      </uta:VerifyExpressionWithOperator>
+                                    </Sequence>
                                   </TryCatch.Try>
                                   <TryCatch.Catches>
-                                    <Catch x:TypeArguments="s:IndexOutOfRangeException" sap:VirtualizedContainerService.HintSize="435,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                                    <Catch x:TypeArguments="s:IndexOutOfRangeException" sap:VirtualizedContainerService.HintSize="580,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -556,7 +609,7 @@
                                         <ActivityAction.Argument>
                                           <DelegateInArgument x:TypeArguments="s:IndexOutOfRangeException" Name="exception" />
                                         </ActivityAction.Argument>
-                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;[File Name :&quot; + fileName + &quot;, Field Name: &quot; + fieldName + &quot;]'s Actual value was not found in'&quot; + AL_ExistingActionListExcelPath + &quot;'&quot;]" />
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;[File Name :&quot; + fileName + &quot;, Field Name: &quot; + fieldName + &quot;]'s Actual value was not found in'&quot; + AL_ExistingActionListExcelPath + &quot;'. At least one of the table type fields may be causing this problem because the actual number of rows is greater than the number of rows extracted by the robot. The template does not currently have the ability to correct this dynamically. It may be possible to fix this by manually adding the number of table columns to the robot extracted results sheet. Please see the ReadMe or contact masaki.kumamoto@uipath.com for more information.&quot;]" />
                                       </ActivityAction>
                                     </Catch>
                                   </TryCatch.Catches>
@@ -694,7 +747,7 @@
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="873,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
-                    <If Condition="[OCR_Use.Key Is &quot;UiPathDocumentOCR&quot;]" sap:VirtualizedContainerService.HintSize="873,2567" sap2010:WorkflowViewState.IdRef="If_11">
+                    <If Condition="[OCR_Use.Key Is &quot;UiPathDocumentOCR&quot;]" sap:VirtualizedContainerService.HintSize="873,2730" sap2010:WorkflowViewState.IdRef="If_11">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -702,7 +755,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="554,2390" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                        <Sequence sap:VirtualizedContainerService.HintSize="554,2553" sap2010:WorkflowViewState.IdRef="Sequence_52">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="upamt:TaskData" Name="taskObj" />
                           </Sequence.Variables>
@@ -785,9 +838,9 @@
                               <InArgument x:TypeArguments="x:String" x:Key="sheetName">[fileName]</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
-                          <If Condition="[AC_DocumentValidationAction_Use]" sap:VirtualizedContainerService.HintSize="512,971" sap2010:WorkflowViewState.IdRef="If_17">
+                          <If Condition="[AC_DocumentValidationAction_Use]" sap:VirtualizedContainerService.HintSize="512,1134" sap2010:WorkflowViewState.IdRef="If_17">
                             <If.Then>
-                              <Sequence sap:VirtualizedContainerService.HintSize="476,794" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                              <Sequence sap:VirtualizedContainerService.HintSize="476,957" sap2010:WorkflowViewState.IdRef="Sequence_59">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -813,7 +866,7 @@
                                     <InArgument x:TypeArguments="x:String" x:Key="SB_BucketName">[SB_BucketName]</InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
-                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{filename,taskObj.Id,taskObj.Status.Value.ToString,taskObj.CreationTime,taskObj.LastModificationTime,taskObj.ActionUrl}]" DataTable="[dtActions]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
+                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{filename,taskObj.Id,taskObj.Status.Value.ToString,taskObj.CreationTime,taskObj.LastModificationTime,taskObj.ActionUrl}]" DataTable="[dtActions]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
                                 <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="actionListExcelFilePath" sap:VirtualizedContainerService.HintSize="434,387" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_16" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[excelActionListExcelPath]">
                                   <ui:ExcelApplicationScope.Body>
                                     <ActivityAction x:TypeArguments="ui:WorkbookApplication">
@@ -875,6 +928,7 @@
                 </ActivityAction>
               </ui:ExcelApplicationScope.Body>
             </ui:ExcelApplicationScope>
+            <uta:AttachDocument ContinueOnError="{x:Null}" DisplayName="Attach Document" FilePath="[resultExcelFilePath]" sap:VirtualizedContainerService.HintSize="951,79" sap2010:WorkflowViewState.IdRef="AttachDocument_1" Tags="[{&quot;DUEST&quot;,  StartTimestampPrefix , OCR_Use.Key}]" />
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>
@@ -885,5 +939,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
+    <uta:AttachDocument ContinueOnError="{x:Null}" DisplayName="Attach Document" FilePath="[excelActionListExcelPath]" sap:VirtualizedContainerService.HintSize="1029,79" sap2010:WorkflowViewState.IdRef="AttachDocument_2" Tags="[{&quot;DUEST&quot;, StartTimestampPrefix}]" />
   </Sequence>
 </Activity>

@@ -13,6 +13,7 @@
     "UiPath.PDF.Activities": "[3.4.1]",
     "UiPath.Persistence.Activities": "[1.3.3]",
     "UiPath.System.Activities": "[21.10.4]",
+    "UiPath.Testing.Activities": "[1.4.2]",
     "UiPath.UIAutomation.Activities": "[21.10.5]"
   },
   "webServices": [],
@@ -37,7 +38,7 @@
   },
   "designOptions": {
     "projectProfile": "Developement",
-    "outputType": "Process",
+    "outputType": "Tests",
     "libraryOptions": {
       "includeOriginalXaml": false,
       "privateWorkflows": []
@@ -49,17 +50,17 @@
         ".gitignore"
       ]
     },
-    "fileInfoCollection": [],
+    "fileInfoCollection": [
+      {
+        "editingStatus": "Publishable",
+        "testCaseId": "934fe100-3086-424a-94be-ebc1efdc7365",
+        "fileName": "01_ExtractDocumentsData.xaml"
+      }
+    ],
     "modernBehavior": true
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
-    {
-      "filePath": "01_ExtractDocumentsData.xaml",
-      "uniqueId": "8204e6ff-dcf5-4f4b-baaa-6e3ff9d07b34",
-      "input": [],
-      "output": []
-    },
     {
       "filePath": "02_CopyActualValuesToReport.xaml",
       "uniqueId": "fb9de371-9e09-405d-8e3d-f59d3d10b24d",
