@@ -20,7 +20,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "20.10.4.0",
-  "projectVersion": "0.3.0",
+  "projectVersion": "0.3.1",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
